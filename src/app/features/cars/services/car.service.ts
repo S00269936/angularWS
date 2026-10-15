@@ -9,7 +9,7 @@ import { Car } from '../models/car.model';
 })
 export class CarService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:5050/cars'; // this should be read from an env variable we will leave it for now.
+  private apiUrl = 'http://localhost:5050/api/v1/cars'; // this should be read from an env variable we will leave it for now.
 
   getCars(): Observable<Car[]> {
     return this.http.get<Car[]>(this.apiUrl)
