@@ -1,13 +1,13 @@
-<h2>Car List</h2>
-
-@if (cars$ | async; as cars) {
-  <div class="grid">
-  @for (car of cars; track car._id) {
-   <app-car-card [car]="car" />
+<div class="container mt-3">
+  <h2>Car List</h2>
+  @if (cars$ | async; as cars) {
+      <div class="row g-3">
+          @for (car of cars; track car._id) {
+              <div class="col-4">
+                  <app-car-card [car]="car"></app-car-card>
+              </div>
+          }
+      </div>
   }
-  </div>
-}
-  
-@else {
-Loading cars...
-}
+  @else {<p>Loading cars...</p>}
+</div>
