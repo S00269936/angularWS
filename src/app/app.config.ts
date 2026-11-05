@@ -1,16 +1,15 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
-import { provideHttpClient, withFetch } from '@angular/common/http';
-import { provideZoneChangeDetection } from '@angular/core';
-
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { routes } from './app.routes';
+import { errorInterceptor } from './core/interceptors/error.interceptor.js';
 
 
 export const appConfig: ApplicationConfig = {
 providers: [
   provideBrowserGlobalErrorListeners(),
   provideRouter(routes, withComponentInputBinding()),
-  provideHttpClient()
+  provideHttpClient(withInterceptors([errorInterceptor]))
 ]
 }
 
