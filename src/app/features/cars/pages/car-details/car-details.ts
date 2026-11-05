@@ -1,9 +1,9 @@
 import { Component, input } from '@angular/core';
 import { inject } from '@angular/core';
-import { CarService } from '../../services/car.service';
+import { CarService } from '../../services/car.service.js';
 import { toSignal, toObservable } from '@angular/core/rxjs-interop';
 import { switchMap } from 'rxjs';
-import { withLoadState, LoadState } from '../../../../shared/load-state';
+import { withLoadState, LoadState } from '../../../../shared/load-state.js';
 import { Car } from '../../models/car.model.js';
 
 @Component({

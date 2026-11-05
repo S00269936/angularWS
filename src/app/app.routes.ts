@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { CarList } from './features/cars/pages/car-list/car-list';
 import { CarForm } from './features/cars/components/car-form/car-form';
+import { CarDetails } from './features/cars/pages/car-details/car-details';
 
 export const routes: Routes = [
     {
@@ -16,6 +17,14 @@ export const routes: Routes = [
         path: 'cars/new',
         component: CarForm
       },
+      {
+        path: 'cars/:id',
+        component: CarDetails
+      },
+      {
+        path: 'cars/new',
+        component: CarForm
+      }
     
   ];
   
