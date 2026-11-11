@@ -6,13 +6,21 @@
     <mat-form-field >
       <mat-label>Make</mat-label>
       <input matInput formControlName="make" placeholder="e.g. Toyota" />
+      @if (carForm.controls.make.hasError('blank')) {
+        <mat-error>Make cannot be only spaces</mat-error>
+      }  
+      @if (carForm.controls.make.hasError('forbiddenValue')) {
+        <mat-error>Make cannot be test</mat-error>
+      }    
       @if (carForm.controls.make.hasError('required')) { 
         <mat-error>Make is required</mat-error>
       } @else if (carForm.controls.make.hasError('minlength')) {
         <mat-error>Make must be at least 2 characters</mat-error>
         } @else if (carForm.controls.make.hasError('maxlength')) {
         <mat-error>Make must be 30 characters or fewer</mat-error>
-        }
+        } 
+        
+        
     
     </mat-form-field>
   
@@ -21,6 +29,10 @@
     <mat-form-field>
       <mat-label>Model</mat-label>
       <input matInput formControlName="model" placeholder="e.g. Corolla" />
+      @if (carForm.controls.model.hasError('blank')) {
+        <mat-error>Model cannot be only spaces</mat-error>
+      }
+      
       @if (carForm.controls.make.hasError('required')) { 
         <mat-error>Model is required</mat-error>
       } @else if (carForm.controls.make.hasError('minlength')) {
@@ -28,6 +40,8 @@
         } @else if (carForm.controls.make.hasError('maxlength')) {
         <mat-error>Model must be 30 characters or fewer</mat-error>
         }
+        
+        
     
     </mat-form-field>
   
