@@ -5,10 +5,12 @@ import { toSignal, toObservable } from '@angular/core/rxjs-interop';
 import { switchMap } from 'rxjs';
 import { withLoadState, LoadState } from '../../../../shared/load-state.js';
 import { Car } from '../../models/car.model.js';
+import { RouterLink } from '@angular/router';
+import { MatAnchor } from '@angular/material/button';
 
 @Component({
   selector: 'app-car-details',
-  imports: [],
+  imports: [RouterLink, MatAnchor],
   templateUrl: './car-details.html',
   styleUrl: './car-details.scss',
 })

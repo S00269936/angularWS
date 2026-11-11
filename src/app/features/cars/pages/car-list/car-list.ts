@@ -5,9 +5,10 @@ import { CarCard } from '../../components/car-card/car-card';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { withLoadState } from '../../../../shared/load-state';
 import { RouterLink } from '@angular/router';
+import { MatAnchor } from '@angular/material/button';
 @Component({
   selector: 'app-car-list',
-  imports: [CarCard, RouterLink],
+  imports: [CarCard, RouterLink, MatAnchor],
   templateUrl: './car-list.html',
   styleUrl: './car-list.scss',
 })

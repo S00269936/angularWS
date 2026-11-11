@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Car, CreateCarDto } from '../models/car.model';
+import { Car, CreateCarDto, UpdateCarDto } from '../models/car.model';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +26,10 @@ export class CarService {
         .pipe(
           catchError((err) => this.handleError(err))
         )
+    }
+
+    updateCar(id: string, changes: UpdateCarDto): Observable<Car> {
+      return this.http.put<Car>(`${this.apiUrl}/${id}`, changes);
     }
   
 

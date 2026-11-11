@@ -11,4 +11,9 @@ export interface Car {
     year?: number;
   }
   
+  export interface UpdateCarDto {
+    make: string;
+    model: string;
+    year?: number;
+  }
   
