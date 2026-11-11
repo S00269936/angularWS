@@ -32,7 +32,10 @@ export class CarService {
       return this.http.put<Car>(`${this.apiUrl}/${id}`, changes);
     }
   
-
+    deleteCar(id: string): Observable<void> {
+      return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    }
+  
   
   private handleError(error: HttpErrorResponse): Observable<never> {
     let message: string;
