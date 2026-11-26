@@ -8,7 +8,7 @@ export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
   const authService = inject(AuthCustomService);
 
-  const apiUri = `http://localhost:3006/api/v1`;
+  const apiUri = `http://localhost:5050/api/v1`;
 
   const jwt = authService.token;
 

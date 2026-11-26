@@ -6,6 +6,7 @@ import { withLoadState, LoadState } from '../../../../shared/load-state.js';
 import { Car } from '../../models/car.model.js';
 import { RouterLink, Router } from '@angular/router';
 import { MatAnchor } from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-car-details',
@@ -17,6 +18,7 @@ export class CarDetails {
   private carService = inject(CarService);
   private readonly router = inject(Router);
   readonly deleting = signal(false);
+  private snackBar = inject(MatSnackBar);
   
   readonly deleteError = signal<string | null>(null);
 
@@ -40,10 +42,13 @@ export class CarDetails {
   
     this.carService.deleteCar(car._id).subscribe({
       next: () => this.router.navigate(['/cars']),
-      error: (err: Error) => {
-        this.deleteError.set(err.message);
-        this.deleting.set(false);
-      },
+      error: (err) => this.openErrorSnackBar(err.message)
+    });
+  }
+  private openErrorSnackBar(message: string): void {
+    this.snackBar.open(message, 'Dismiss', {
+      duration: 15000,
+      panelClass: ['error-snackbar']
     });
   }
 }
