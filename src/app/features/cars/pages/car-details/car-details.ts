@@ -7,6 +7,7 @@ import { Car } from '../../models/car.model.js';
 import { RouterLink, Router } from '@angular/router';
 import { MatAnchor } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthCustomService } from '../../../../core/auth/auth-custom.service.js';
 
 @Component({
   selector: 'app-car-details',
@@ -15,6 +16,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './car-details.scss',
 })
 export class CarDetails {
+  private authService = inject(AuthCustomService);
+  isAuthenicated = this.authService.isAuthenticated;
   private carService = inject(CarService);
   private readonly router = inject(Router);
   readonly deleting = signal(false);
