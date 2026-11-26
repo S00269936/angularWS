@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { RegisterUserDto, User, LoginUserDto } from '../models/users';
 import { Router } from '@angular/router';
 import { tap, map } from 'rxjs';
+import { environment } from '../../../environments/environment.development';
 
 interface AuthResponse{
   token: string;
@@ -14,7 +15,8 @@ interface AuthResponse{
   providedIn: 'root',
 })
 export class AuthCustomService {
-  private readonly apiUrl = 'http://localhost:5050/api/v1/auth'; // this should be read from an env variable we will leave it for now.
+  //private readonly apiUrl = 'http://localhost:5050/api/v1/auth'; // this should be read from an env variable we will leave it for now.
+  private readonly apiUrl = `${environment.apiUri}/auth`
 
   private http = inject(HttpClient);
   private router = inject(Router);

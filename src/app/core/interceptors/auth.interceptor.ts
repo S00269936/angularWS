@@ -3,12 +3,14 @@ import { catchError, throwError } from 'rxjs';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthCustomService } from '../auth/auth-custom.service';
+import { environment } from '../../../environments/environment.development';
 
 export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
   const authService = inject(AuthCustomService);
 
-  const apiUri = `http://localhost:5050/api/v1`;
+  //const apiUri = `http://localhost:5050/api/v1`;
+  const apiUrl = `${environment.apiUri}`
 
   const jwt = authService.token;
 
@@ -17,7 +19,7 @@ export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
   // if so we create a new request with the Bearer token
   // if not we just copy the existing request.
 
-  const authRequest = req.url.startsWith(apiUri) && jwt
+  const authRequest = req.url.startsWith(apiUrl) && jwt
     ? req.clone({ setHeaders: { Authorization: `Bearer ${jwt}` } })
     : req;
 
