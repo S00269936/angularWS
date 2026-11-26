@@ -4,6 +4,7 @@ import { CarForm } from './features/cars/components/car-form/car-form';
 import { CarDetails } from './features/cars/pages/car-details/car-details';
 import { Register } from './features/auth/pages/register/register';
 import { LoginComponent } from './features/auth/pages/login/login';
+import { authGuard } from './core/auth/auth-guard';
 
 export const routes: Routes = [
     {
@@ -17,7 +18,7 @@ export const routes: Routes = [
     },
     {
         path: 'cars/new',
-        component: CarForm
+        component: CarForm, canActivate: [authGuard]
       },
       {
         path: 'cars/:id',
@@ -25,11 +26,11 @@ export const routes: Routes = [
       },
       {
         path: 'cars/new',
-        component: CarForm
+        component: CarForm, canActivate: [authGuard]
       },
       {
         path: 'cars/:id/edit',
-        component: CarForm
+        component: CarForm, canActivate: [authGuard]
       },
       {
         path: 'register',
